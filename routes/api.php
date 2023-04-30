@@ -34,7 +34,7 @@ Route::group([
     'middleware' => 'api',
     'as' => 'auth.'
 ], function () {
-    $auth_routes = ['login', 'me', 'logout', 'refresh'];
+    $auth_routes = ['login', 'me', 'logout', 'refresh', 'register'];
     foreach ($auth_routes as $auth_route) {
         Route::post("/" . $auth_route, [AuthController::class, $auth_route])->name($auth_route);
     }

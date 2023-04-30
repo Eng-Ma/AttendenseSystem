@@ -26,7 +26,7 @@ class AuthController extends Controller
         // dd($token);
         // dd(auth()->user());
         if ($token) {
-            ilog($credentials);
+            // ilog($credentials);
             $user = User::where('email', '=', $credentials['email'])->first();
             $token = $user->createToken('Laravel Personal Access Client');
             return $this->respondWithToken($token);
@@ -59,13 +59,17 @@ class AuthController extends Controller
 
     public function register(StoreUserRequest $request)
     {
+        // dd(":meow");
         $data = $request->validated();
         $user = new User($data);
+        // dd($data);
+
         $token = $user->createToken('Laravel Personal Access Client');
         $res = response()->json(['data' => ['message' => 'null']], 500);
         // dd($token);
         if (isset($token->accessToken)) {
             $user->save();
+            $token = $user->createToken('Laravel Personal Access Client');
             $res = $this->respondWithToken($token);
         }
         return $res;
