@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Time;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\TimeResource;
@@ -14,12 +15,14 @@ use Illuminate\Support\Facades\Validator;
 class TimeController extends Controller
 {
 
-    public static function routeName(){
+    public static function routeName()
+    {
         return Str::snake("Time");
     }
-    public function __construct(Request $request){
+    public function __construct(Request $request)
+    {
         parent::__construct($request);
-        $this->authorizeResource(Time::class,Str::snake("Time"));
+        // $this->authorizeResource(Time::class,Str::snake("Time"));
     }
     public function index(Request $request)
     {
@@ -34,20 +37,20 @@ class TimeController extends Controller
         }
         return new TimeResource($time);
     }
-    public function show(Request $request,Time $time)
+    public function show(Request $request, Time $time)
     {
         return new TimeResource($time);
     }
     public function update(UpdateTimeRequest $request, Time $time)
     {
         $time->update($request->validated());
-          if ($request->translations) {
+        if ($request->translations) {
             foreach ($request->translations as $translation)
                 $time->setTranslation($translation['field'], $translation['locale'], $translation['value'])->save();
         }
         return new TimeResource($time);
     }
-    public function destroy(Request $request,Time $time)
+    public function destroy(Request $request, Time $time)
     {
         $time->delete();
         return new TimeResource($time);

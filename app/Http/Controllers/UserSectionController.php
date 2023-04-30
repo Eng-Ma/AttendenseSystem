@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\UserSection;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserSectionResource;
@@ -14,12 +15,14 @@ use Illuminate\Support\Facades\Validator;
 class UserSectionController extends Controller
 {
 
-    public static function routeName(){
+    public static function routeName()
+    {
         return Str::snake("UserSection");
     }
-    public function __construct(Request $request){
+    public function __construct(Request $request)
+    {
         parent::__construct($request);
-        $this->authorizeResource(UserSection::class,Str::snake("UserSection"));
+        // $this->authorizeResource(UserSection::class,Str::snake("UserSection"));
     }
     public function index(Request $request)
     {
@@ -34,20 +37,20 @@ class UserSectionController extends Controller
         }
         return new UserSectionResource($userSection);
     }
-    public function show(Request $request,UserSection $userSection)
+    public function show(Request $request, UserSection $userSection)
     {
         return new UserSectionResource($userSection);
     }
     public function update(UpdateUserSectionRequest $request, UserSection $userSection)
     {
         $userSection->update($request->validated());
-          if ($request->translations) {
+        if ($request->translations) {
             foreach ($request->translations as $translation)
                 $userSection->setTranslation($translation['field'], $translation['locale'], $translation['value'])->save();
         }
         return new UserSectionResource($userSection);
     }
-    public function destroy(Request $request,UserSection $userSection)
+    public function destroy(Request $request, UserSection $userSection)
     {
         $userSection->delete();
         return new UserSectionResource($userSection);

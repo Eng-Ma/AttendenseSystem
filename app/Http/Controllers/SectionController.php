@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Section;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SectionResource;
@@ -14,12 +15,14 @@ use Illuminate\Support\Facades\Validator;
 class SectionController extends Controller
 {
 
-    public static function routeName(){
+    public static function routeName()
+    {
         return Str::snake("Section");
     }
-    public function __construct(Request $request){
+    public function __construct(Request $request)
+    {
         parent::__construct($request);
-        $this->authorizeResource(Section::class,Str::snake("Section"));
+        // $this->authorizeResource(Section::class,Str::snake("Section"));
     }
     public function index(Request $request)
     {
@@ -34,20 +37,20 @@ class SectionController extends Controller
         }
         return new SectionResource($section);
     }
-    public function show(Request $request,Section $section)
+    public function show(Request $request, Section $section)
     {
         return new SectionResource($section);
     }
     public function update(UpdateSectionRequest $request, Section $section)
     {
         $section->update($request->validated());
-          if ($request->translations) {
+        if ($request->translations) {
             foreach ($request->translations as $translation)
                 $section->setTranslation($translation['field'], $translation['locale'], $translation['value'])->save();
         }
         return new SectionResource($section);
     }
-    public function destroy(Request $request,Section $section)
+    public function destroy(Request $request, Section $section)
     {
         $section->delete();
         return new SectionResource($section);

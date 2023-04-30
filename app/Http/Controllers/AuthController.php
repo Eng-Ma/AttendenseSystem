@@ -21,13 +21,13 @@ class AuthController extends Controller
     public function login()
     {
 
-        $credentials = request(['email', 'password']);
+        $credentials = request(['mobile', 'password']);
         $token = auth()->attempt($credentials);
         // dd($token);
         // dd(auth()->user());
         if ($token) {
             // ilog($credentials);
-            $user = User::where('email', '=', $credentials['email'])->first();
+            $user = User::where('mobile', '=', $credentials['mobile'])->first();
             $token = $user->createToken('Laravel Personal Access Client');
             return $this->respondWithToken($token);
         }

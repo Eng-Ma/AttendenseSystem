@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\AbsenseRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AbsenseRequestResource;
@@ -14,12 +15,14 @@ use Illuminate\Support\Facades\Validator;
 class AbsenseRequestController extends Controller
 {
 
-    public static function routeName(){
+    public static function routeName()
+    {
         return Str::snake("AbsenseRequest");
     }
-    public function __construct(Request $request){
+    public function __construct(Request $request)
+    {
         parent::__construct($request);
-        $this->authorizeResource(AbsenseRequest::class,Str::snake("AbsenseRequest"));
+        // $this->authorizeResource(AbsenseRequest::class,Str::snake("AbsenseRequest"));
     }
     public function index(Request $request)
     {
@@ -34,20 +37,20 @@ class AbsenseRequestController extends Controller
         }
         return new AbsenseRequestResource($absenseRequest);
     }
-    public function show(Request $request,AbsenseRequest $absenseRequest)
+    public function show(Request $request, AbsenseRequest $absenseRequest)
     {
         return new AbsenseRequestResource($absenseRequest);
     }
     public function update(UpdateAbsenseRequestRequest $request, AbsenseRequest $absenseRequest)
     {
         $absenseRequest->update($request->validated());
-          if ($request->translations) {
+        if ($request->translations) {
             foreach ($request->translations as $translation)
                 $absenseRequest->setTranslation($translation['field'], $translation['locale'], $translation['value'])->save();
         }
         return new AbsenseRequestResource($absenseRequest);
     }
-    public function destroy(Request $request,AbsenseRequest $absenseRequest)
+    public function destroy(Request $request, AbsenseRequest $absenseRequest)
     {
         $absenseRequest->delete();
         return new AbsenseRequestResource($absenseRequest);
