@@ -1,0 +1,525 @@
+{
+	"info": {
+		"_postman_id": "13b5d80e-bcd6-426f-bfad-3e9ac306297e",
+		"name": "Attendense",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18024011"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTU1YjRmNzY0MjRlOTY2N2RkYTFhYzY4YzdiMWZmMDIwMjk1ZTkxYzE3NjIxMGQ2ZTNiNjY1ZDdkZjJjMjg5NWM4ZTI4OGI3NjNiZjhmYzciLCJpYXQiOjE2ODI4NzQyODAuNzgxNTAxLCJuYmYiOjE2ODI4NzQyODAuNzgxNTA4LCJleHAiOjE3MTQ0OTY2ODAuNzY2Mzc1LCJzdWIiOiIxMiIsInNjb3BlcyI6W119.SXiva79Z6gcbnBPxCGj1a6Nmsf6vL2U66b0Oot3aH6ZfUkAPCiPrYwsVQv0YtUm8rMgmF4wFID3QUrS67Sgj6Ia_E6UFnT14rQwTOUDGXKeJFu-yW3fqLlOA0_EJ_DIS2drSbzaQoF3lc0nQCnUIZlUrMaum2CyP1UmRG4Hyfmpo29VcI1IrfW2fhJv_WThTTfi1Jp91qz02qOpXrHsQja6N5e2VsDxE4LB2zy8dIB-XQgKnfBPi6ujyHu82LIDC8ps6-ZEo2ECTxI6HpqMslTNpuz2vREJ2j7PhCGUOJFza-mNbHuMjxVa3SLzaD16oBX5JcHz_9m97gV4-aQTKreIVBx9h3ljpwwjsLXdzxg-iD0yK8WI4ysx-2l4Jkjm9mSVBEYnMoYKZ301BM4JaTG3Sigz1X9EbMKBxM-gDRcU4LjNT5eg2io35vvbneSWZMInFTRfF_ReiZinEZN2R-TvZUGqmxD_HMMw1f_lq3aMvtKoKJmjeg8SchXvFT-6I8zjicWW1YsD8E65FldvyGTihF5eh45HGKvtVF-59hLzvzY4M4W6rFtxWmwhsYsZ_rLrVvXLZrGp0mMbS0Lk-LziBDfdReHERbIl0FHdNPh4qNE01Zn0mF0DCk8DSzjJ9zqG8WTM5lNVGWty6OlSBaxpl131GpIqsn08hrcm664M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "",
+							"description": "string optional",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "",
+							"description": "string  required",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "",
+							"description": "string required",
+							"type": "text"
+						},
+						{
+							"key": "mobile",
+							"value": "",
+							"description": "string required",
+							"type": "text"
+						},
+						{
+							"key": "dob",
+							"value": "",
+							"description": "datetime, nullable, for Birth of Date",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "",
+							"description": "Integer, default is 3, to specifiy user role",
+							"type": "text"
+						},
+						{
+							"key": "avater",
+							"value": "",
+							"description": "?, ?, currently unknown. ignore it",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "mobile",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AbsenseRequest",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmY1NTFhYTkzNDUxODY5YjZlZjJjMzk4NzlhMTdmNDQ0NTdlNjFjNWI0NjMyM2NhMDRiMTE0OTk5MzQ4MWQzNWYwZTQ1MTUyNGJkOTVkYzAiLCJpYXQiOjE2ODI4NzY5ODguMTc3NDAxLCJuYmYiOjE2ODI4NzY5ODguMTc3NDA1LCJleHAiOjE3MTQ0OTkzODguMTU0ODAzLCJzdWIiOiIxMiIsInNjb3BlcyI6W119.VJRDm4M95JW3l54O_WmCxsBO4YX-SIT4duL0SQQVkOwk-1zpOqnLoXsT8HNO3zqSAJpDFxgF4DixUV_G-zLZhoX0fV37S7b4IJRAtux0qjEgylktVkWFwfyttwgOWUw5Ic32swxeLEAgZ9Bij0jhrU5zdkqyHPJccOc8IU-EhSqxOoSJkyGrAG2oIwYJIm_GazuYgv1c3PjhGr5BmWhK6qlUqHNRHZGkooPSrbwD-hoWCPsFpCRtRY2mHTh-wGri4c1Oe1P8SMLbGAnJIMx79bA5GKPPs-qTYOHmo1ARxuedfAhS5Cme-2vxhLfqYNjmeq15pwQkSmEAaewW2SrJ1H6z_Rm1ado4mICymlp0C6RvFGqyqN0B_y-osfVQr7Fv5WRwIVsf6N8rtQaQs-FwfZV79r_herThbtFYL42w2aIzRNWbp0Udoll8JsuHmZS2hwdcdvhaofnnVH52WrhTCqXIRvnzJYOZDO-NKgF3WqCsKYJa29ylEBS_EiHgshZo0JzZwnkhcWsZttD-I1v5Sz2t74E3zQ6mbpkqoYOXBKN7bWJtdwzPgM2Rg9rwysCEvMZed782lbb7tvDPKJuVB5OFukvCooYcCC95OlY5wzG1pnq_Cxi6fB4W_W3Hr71zwnZpT5Fij5CAg_g8AKuKvc1OES5IZrWRjDWncJ048-c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "time_id",
+							"value": "",
+							"description": "FK frrom times table",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "attendence_id",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "reason",
+							"value": "",
+							"description": "string descriping the reason of absense",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/absense_request",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"absense_request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Attendence",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "attendence_at",
+							"value": "",
+							"description": "integer, required, date when the user logged attendence",
+							"type": "text"
+						},
+						{
+							"key": "time_date_id",
+							"value": "",
+							"description": "integer, required, FK from time_date table, specifiy which section datetime the user logged in",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/attendence",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"attendence"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Course",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "",
+							"description": "string, required, name of the course",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "",
+							"description": "string, required, unique, course's code",
+							"type": "text"
+						},
+						{
+							"key": "hour_per_week",
+							"value": "",
+							"description": "integer,required, course's hour per week",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/course",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"course"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notification",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/notification?",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"notification"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"description": "**this table still not real**"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Section",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/section?course_id&teacher_id",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"section"
+					],
+					"query": [
+						{
+							"key": "course_id",
+							"value": null,
+							"description": "integer, required, FK of course table to choose this section belongs to which course"
+						},
+						{
+							"key": "teacher_id",
+							"value": null,
+							"description": "integer, nullable, FK of table User to specifiy who is this section teacher"
+						},
+						{
+							"key": "absense_tolerance",
+							"value": null,
+							"description": "calculated value, no need to insert",
+							"disabled": true
+						},
+						{
+							"key": "col_5",
+							"value": null,
+							"description": "mostly this is a typo from us but lets reqpeat it here :p",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Time",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/time?day&start_time&duartion&section_id",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"time"
+					],
+					"query": [
+						{
+							"key": "day",
+							"value": null,
+							"description": "integer, requried, specifiy which day of the weeks(Saturday is zero)"
+						},
+						{
+							"key": "start_time",
+							"value": null,
+							"description": "datetime, required, specifying when in the day it starts "
+						},
+						{
+							"key": "duartion",
+							"value": null,
+							"description": "integer, required, number in minutes telling the duartion of this time"
+						},
+						{
+							"key": "section_id",
+							"value": null,
+							"description": "integer, required FK of table sections, specifiying this time belongs to which section"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TimeDate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "date",
+							"value": "",
+							"description": "string, required, **currently unknown this value refers to what**",
+							"type": "text"
+						},
+						{
+							"key": "time_id",
+							"value": "",
+							"description": "integer, required, FK on table times",
+							"type": "text"
+						},
+						{
+							"key": "is_holiday",
+							"value": "",
+							"description": "integer, requried, boolean value {0 => False, 1 => True} specifiy this time_date is holiday or not",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/time_date",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"time_date"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserSection",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "",
+							"description": "no need to send, we already have it",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "section_id",
+							"value": "",
+							"description": "integer, required, FK section_id on table Sections telling user sections",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "",
+							"description": "integer, required, status of a user_sections **no many information are known\"",
+							"type": "text"
+						},
+						{
+							"key": "absense_times",
+							"value": "",
+							"description": "integer, calculated, no need to send",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/user_section",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user_section"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
