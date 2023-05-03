@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('absense_requests', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('CASCADE');
+            $table->foreignId('time_id')->references('id')->on('times')->onDelete('CASCADE');
+            $table->string('reason')->default('');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

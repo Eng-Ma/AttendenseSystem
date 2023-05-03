@@ -24,7 +24,10 @@ class UpdateAttendenceRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'attendance_at' => 'required|date',
+            'user_id' => 'required|exists:users,id',
+            'time_date_id' => 'required|exists:time_dates,id',
+            'absense_request_id' => 'nullable|exists:absense_requests,id',
         ];
     }
 }

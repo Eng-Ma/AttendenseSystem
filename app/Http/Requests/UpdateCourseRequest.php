@@ -24,7 +24,9 @@ class UpdateCourseRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string',
+            'hours_per_week' => 'required|numeric|min:0|max:168',
+            'code' => 'required|string|unique:courses',
         ];
     }
 }

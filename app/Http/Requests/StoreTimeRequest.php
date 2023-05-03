@@ -24,7 +24,10 @@ class StoreTimeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'day' => 'required|integer|min:0|max:6',
+            'start_time' => 'required|date_format:H:i:s',
+            'duration' => 'required|numeric|min:0',
+            'section_id' => 'required|exists:sections,id',
         ];
     }
 }

@@ -24,7 +24,10 @@ class StoreUserSectionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'user_id' => 'required|exists:users,id',
+            'section_id' => 'required|exists:sections,id',
+            'status' => 'integer',
+            // 'absence_times' => 'required|integer|min:0', // I see it should not be an input, only be updated from Backend
         ];
     }
 }

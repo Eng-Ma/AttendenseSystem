@@ -9,7 +9,7 @@ class BaseModel extends Model
 {
     use HasFactory;
 
-    public function scopeSearch($query, $term)
+    public function scopeSearch($query, $request)
     {
     }
 
