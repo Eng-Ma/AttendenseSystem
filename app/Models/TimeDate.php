@@ -9,11 +9,17 @@ class TimeDate extends BaseModel
 {
     use HasFactory;
 
+    protected $fillable = [
+        'date',
+        'time_id',
+        'is_holiday',
+    ];
+
     public function scopeSearch($query, $request)
     {
 
         $query->when($request->id, function ($q, $id) {
-            $q->where('id', $id);
+            $q->whereIn('id', $id);
         });
         $query->when($request->time_id, function ($q, $time_id) {
             $q->whereIn('time_id', $time_id);

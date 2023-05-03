@@ -9,11 +9,12 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Auth\Access\Response;
 
 class UserController extends Controller
 {
+    private $auth_user = null;
 
     public static function routeName()
     {
@@ -22,6 +23,7 @@ class UserController extends Controller
     public function __construct(Request $request)
     {
         parent::__construct($request);
+        $this->auth_user = auth()->guard('api')->user();
     }
     public function index(Request $request)
     {
@@ -30,11 +32,7 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         $user = User::create($request->validated());
-        dd($user);
-        if ($request->translations) {
-            foreach ($request->translations as $translation)
-                $user->setTranslation($translation['field'], $translation['locale'], $translation['value'])->save();
-        }
+        // dd($user);
         return new UserResource($user);
     }
     public function show(Request $request, User $user)
@@ -43,12 +41,13 @@ class UserController extends Controller
     }
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user->update($request->validated());
-        if ($request->translations) {
-            foreach ($request->translations as $translation)
-                $user->setTranslation($translation['field'], $translation['locale'], $translation['value'])->save();
+        // dd($request->validated());
+        // only a temporary solution for autherization, just keep it here for now
+        if ($this->auth_user != null && $this->auth_user->is($user)) {
+            $user->update($request->validated());
+            return new UserResource($user);
         }
-        return new UserResource($user);
+        return Response::deny("You are not allowed to update this user");
     }
     public function destroy(Request $request, User $user)
     {

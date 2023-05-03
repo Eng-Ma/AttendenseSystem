@@ -9,17 +9,24 @@ class Time extends BaseModel
 {
     use HasFactory;
 
+    protected $fillable = [
+        'day',
+        'start_time',
+        'duration',
+        'section_id',
+    ];
+
     public function scopeSearch($query, $request)
     {
 
         $query->when($request->id, function ($q, $id) {
-            $q->where('id', $id);
+            $q->whereIn('id', $id);
         });
         $query->when($request->start_time, function ($q, $start_time) {
             $q->whereDate('start_time', $start_time);
         });
         $query->when($request->day, function ($q, $day) {
-            $q->where('day', $day);
+            $q->whereIn('day', $day);
         });
         $query->when($request->duartion, function ($q, $duartion) {
             $q->where('duartion', $duartion);

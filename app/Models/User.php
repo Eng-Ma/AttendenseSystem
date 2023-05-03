@@ -46,12 +46,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function scopeFilterByType($query, $type)
-    {
-        return $query->when($type, function ($query, $type) {
-            return $query->where('type', $type);
-        });
-    }
 
     public function scopeSearch($query, $request)
     {
@@ -60,7 +54,7 @@ class User extends Authenticatable
             $qu->whereIn('type', $type);
         });
         $query->when($request->id, function ($q, $id) {
-            $q->where('id', $id);
+            $q->whereIn('id', $id);
         });
         $query->when($request->email, function ($q, $email) {
             $q->where('email', $email);
@@ -74,11 +68,14 @@ class User extends Authenticatable
         $query->when($request->dob, function ($q, $dob) {
             $q->whereDate('dob', $dob);
         });
-
         // dd($query);
     }
 
     public function scopeSort($query, $term)
+    {
+    }
+
+    public function isset()
     {
     }
 }

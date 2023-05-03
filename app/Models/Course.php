@@ -9,11 +9,17 @@ class Course extends BaseModel
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'hours_per_week',
+        'code',
+    ];
+
     public function scopeSearch($query, $request)
     {
 
         $query->when($request->id, function ($q, $id) {
-            $q->where('id', $id);
+            $q->whereIn('id', $id);
         });
         $query->when($request->name, function ($q, $name) {
             $q->where('name', $name);

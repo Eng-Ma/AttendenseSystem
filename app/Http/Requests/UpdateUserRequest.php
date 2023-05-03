@@ -29,7 +29,8 @@ class UpdateUserRequest extends FormRequest
             'mobile' => 'sometimes|string|unique:users,mobile|max:20',
             'type' => 'sometimes|integer|between:1,4',
             'dob' => 'sometimes|date|before:today',
-            'password' => 'sometimes|string|min:8|confirmed',
+            // 'password' => 'sometimes|string|min:8|confirmed',
+            //'password' => 'sometimes|string',
         ];
     }
 }
