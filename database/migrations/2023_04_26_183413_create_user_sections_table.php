@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('user_sections', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('CASCADE');
+            $table->foreignId('section_id')->references('id')->on('sections')->onDelete('CASCADE');
+            $table->integer('status')->default(0);
+            $table->integer('absence_times')->default(0);
             $table->timestamps();
         });
     }

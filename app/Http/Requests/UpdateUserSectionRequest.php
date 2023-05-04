@@ -24,7 +24,10 @@ class UpdateUserSectionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'user_id' => 'sometimes|exists:users,id',
+            'section_id' => 'sometimes|exists:sections,id',
+            'status' => 'sometimes|integer',
+            // 'absence_times' => 'sometimes|integer|min:0', // I see it should not be an input, only be updated from Backend
         ];
     }
 }

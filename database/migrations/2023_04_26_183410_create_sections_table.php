@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('course_id')->references('id')->on('courses')->onDelete('CASCADE');
+            $table->foreignId('teacher_id')->references('id')->on('users')->onDelete('CASCADE');
+            $table->float('absense_tolerance');
             $table->timestamps();
         });
     }

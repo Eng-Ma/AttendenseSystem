@@ -19,6 +19,7 @@ return new class extends Migration
             $table->enum('type', [1, 2, 3, 4])->default(3); // admin, teacher, student, parent
             $table->string('password');
             $table->string('avatar')->nullable();
+            $table->date('dob')->nullable();
             $table->timestamps();
         });
     }

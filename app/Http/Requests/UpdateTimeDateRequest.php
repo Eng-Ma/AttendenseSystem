@@ -24,7 +24,9 @@ class UpdateTimeDateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'date' => 'required|date_format:Y-m-d',
+            'time_id' => 'required|exists:times,id',
+            'is_holiday' => 'required|boolean',
         ];
     }
 }

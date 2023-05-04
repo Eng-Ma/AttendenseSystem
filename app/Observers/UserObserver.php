@@ -12,6 +12,7 @@ class UserObserver
      */
     public function creating(User $user): void
     {
+        // dd($user);
         $hashed_password = Hash::make($user->password);
         $user->password = $hashed_password;
     }
@@ -29,10 +30,7 @@ class UserObserver
      */
     public function updating(User $user): void
     {
-        if ($user->isset('password')) {
-            $hashed_password = Hash::make($user->password);
-            $user->password = $hashed_password;
-        }
+        //
     }
 
     /**

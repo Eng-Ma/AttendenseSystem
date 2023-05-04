@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->float('hours_per_week');
+            $table->string('code');
             $table->timestamps();
         });
     }

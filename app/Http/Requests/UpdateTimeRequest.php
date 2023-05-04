@@ -24,7 +24,10 @@ class UpdateTimeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'day' => 'sometimes|integer|min:0|max:6',
+            'start_time' => 'sometimes|date_format:H:i:s',
+            'duration' => 'sometimes|numeric|min:0',
+            'section_id' => 'sometimes|exists:sections,id',
         ];
     }
 }

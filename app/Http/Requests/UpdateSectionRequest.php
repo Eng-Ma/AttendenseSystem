@@ -24,7 +24,9 @@ class UpdateSectionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'course_id' => 'sometimes|exists:courses,id',
+            'teacher_id' => 'sometimes|exists:users,id',
+            // 'absense_tolerance' => 'required|numeric|min:0|max:1', // its not an input field, its calculated
         ];
     }
 }

@@ -24,7 +24,10 @@ class StoreAbsenseRequestRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'user_id' => 'required|exists:users,id',
+            'time_id' => 'required|exists:times,id',
+            'reason' => 'nullable|string',
+            'status' => 'required|integer',
         ];
     }
 }
