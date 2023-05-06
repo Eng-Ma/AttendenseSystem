@@ -15,11 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-$controllers = require base_path('vendor/composer/autoload_classmap.php');
-$controllers = array_keys($controllers);
-$controllers = array_filter($controllers, function ($controller) {
-    return (strpos($controller, 'Controllers') !== false) && (strpos($controller, 'Controllers\\Controller') === false)  && strlen($controller) > 0 && strpos($controller, 'Laravel') === false && strpos($controller, 'Auth') === false && (strpos($controller, 'Controller')   !== false);
-});
+$controllers = [];
+
+foreach (glob(app_path('Http/Controllers/*.php')) as $file) {
+    $class = 'App\\Http\\Controllers\\' . basename($file, '.php');
+    if (class_exists($class)) {
+        $reflection = new ReflectionClass($class);
+        if (!$reflection->isAbstract() && !$reflection->isInterface() && !$reflection->isTrait()) {
+            $controllers[] = $class;
+        }
+    }
+}
 
 array_map(function ($controller) {
 
