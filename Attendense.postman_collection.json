@@ -7,30 +7,15 @@
 	},
 	"item": [
 		{
-			"name": "Register User",
+			"name": "login User",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
 					"accept": true
 				}
 			},
 			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTU1YjRmNzY0MjRlOTY2N2RkYTFhYzY4YzdiMWZmMDIwMjk1ZTkxYzE3NjIxMGQ2ZTNiNjY1ZDdkZjJjMjg5NWM4ZTI4OGI3NjNiZjhmYzciLCJpYXQiOjE2ODI4NzQyODAuNzgxNTAxLCJuYmYiOjE2ODI4NzQyODAuNzgxNTA4LCJleHAiOjE3MTQ0OTY2ODAuNzY2Mzc1LCJzdWIiOiIxMiIsInNjb3BlcyI6W119.SXiva79Z6gcbnBPxCGj1a6Nmsf6vL2U66b0Oot3aH6ZfUkAPCiPrYwsVQv0YtUm8rMgmF4wFID3QUrS67Sgj6Ia_E6UFnT14rQwTOUDGXKeJFu-yW3fqLlOA0_EJ_DIS2drSbzaQoF3lc0nQCnUIZlUrMaum2CyP1UmRG4Hyfmpo29VcI1IrfW2fhJv_WThTTfi1Jp91qz02qOpXrHsQja6N5e2VsDxE4LB2zy8dIB-XQgKnfBPi6ujyHu82LIDC8ps6-ZEo2ECTxI6HpqMslTNpuz2vREJ2j7PhCGUOJFza-mNbHuMjxVa3SLzaD16oBX5JcHz_9m97gV4-aQTKreIVBx9h3ljpwwjsLXdzxg-iD0yK8WI4ysx-2l4Jkjm9mSVBEYnMoYKZ301BM4JaTG3Sigz1X9EbMKBxM-gDRcU4LjNT5eg2io35vvbneSWZMInFTRfF_ReiZinEZN2R-TvZUGqmxD_HMMw1f_lq3aMvtKoKJmjeg8SchXvFT-6I8zjicWW1YsD8E65FldvyGTihF5eh45HGKvtVF-59hLzvzY4M4W6rFtxWmwhsYsZ_rLrVvXLZrGp0mMbS0Lk-LziBDfdReHERbIl0FHdNPh4qNE01Zn0mF0DCk8DSzjJ9zqG8WTM5lNVGWty6OlSBaxpl131GpIqsn08hrcm664M",
-							"type": "string"
-						}
-					]
-				},
 				"method": "POST",
 				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
 					{
 						"key": "Accept",
 						"value": "application/json",
@@ -38,103 +23,20 @@
 					}
 				],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "",
-							"description": "string optional",
-							"type": "text"
-						},
-						{
-							"key": "email",
-							"value": "",
-							"description": "string  required",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "",
-							"description": "string required",
-							"type": "text"
-						},
-						{
-							"key": "mobile",
-							"value": "",
-							"description": "string required",
-							"type": "text"
-						},
-						{
-							"key": "dob",
-							"value": "",
-							"description": "datetime, nullable, for Birth of Date",
-							"type": "text"
-						},
-						{
-							"key": "type",
-							"value": "",
-							"description": "Integer, default is 3, to specifiy user role",
-							"type": "text"
-						},
-						{
-							"key": "avater",
-							"value": "",
-							"description": "?, ?, currently unknown. ignore it",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n    \"mobile\": \"123\", //type:string, \r\n    \"password\": \"c\" // type:string, \r\n    // only those 2 inputs are needed to login\r\n}\r\n\r\n// this end points returns json output as the following form\r\n/*\r\n    {\r\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYmMyYjliNTQ1M2I3NTE2Mjc3MWIxMzExNjA5MmYzYzg3MDU2OWI1MDFhZmE0NzFjZTY3MWUyNjc0ZGRiN2Y5ZjRhZGQ3YWEyNzQyYTIxODMiLCJpYXQiOjE2ODMxNTM4MTcuODc4MzQ3LCJuYmYiOjE2ODMxNTM4MTcuODc4MzUsImV4cCI6MTcxNDc3NjIxNy44NTg1MzEsInN1YiI6IjIiLCJzY29wZXMiOltdfQ.W2EgRCCDTpFFDStTtuBtUQ15fFlHAuswH4Rut8I9_JKrpwQB9Bvm8FJhQ6bTk1E6XZm1YN-EFXNCz0UCz0CP8hwQNREoAhWEz_UOosxV3mHM7YEWzt1SfseEiWvIfGnT1VIjYjf0j5kSmAfqa7bXYizsoZnRQ3sew6GUWJ1QsbEOiF2WlcQEUfyDYNL92zcJvegxW5o7iqqMA4nctsYQIAxKWTPqf-0B2Ca66J0_xCrQtzN0WWil23dLEU4ZgUy4apgbJpz4fKEiEupptGVd6_KfBFCAD4KwsM0hx7JuSWxVRXz6BcyCModGUq-K7msuNWOM6MmW1bnKKO0ZojEnPzO-iy0IMqDFeV0wE1f7dliazj8y-OP6IOAUGEIdBj9I7881tgviA9zG7ChvM9LpDQUv7XjKLgtWM0Oo62jk_OkdpbpoxqeiQoN4e9ilYTL3GeV-5f5SpDpdrl6yibASILMcjRuAclHYWvVJB7ESE06WiVnO1HqLHb-d-QGdC1TbREa0xdgHHKYcUV_fHSPcT_ltHU5G5BnT56Km9vLIHAf5kEnG_ezyImKy29IPzM3_T5cfaI0WcryAAVPiJwV2zIZkojhDctCFrPCrkyV5svcZYj-k0-oJ664fqDQo6fHeJo9TB1f6mmYrQ3JlIIXTj97Hfli48dXyKIyqAYpQjG8\",\r\n        \"token_type\": \"bearer\",\r\n        \"user\": {\r\n            \"id\": 2,\r\n            \"name\": \"P\",\r\n            \"email\": \"v@h.com\",\r\n            \"mobile\": \"970\",\r\n            \"type\": \"3\",\r\n            \"avatar\": null,\r\n            \"dob\": null,\r\n            \"created_at\": \"2023-05-03T21:29:54.000000Z\",\r\n            \"updated_at\": \"2023-05-03T22:03:32.000000Z\"\r\n        }\r\n    }\r\n    */\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/auth/register",
-					"protocol": "http",
+					"raw": "{{base_url}}/auth/login",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{base_url}}"
 					],
-					"port": "8000",
 					"path": [
-						"api",
-						"auth",
-						"register"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "login User",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "mobile",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/auth/login",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
 						"auth",
 						"login"
 					]
@@ -143,7 +45,12 @@
 			"response": []
 		},
 		{
-			"name": "AbsenseRequest",
+			"name": "Create AbsenseRequest",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -156,50 +63,28 @@
 					]
 				},
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "time_id",
-							"value": "",
-							"description": "FK frrom times table",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "attendence_id",
-							"value": "",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "reason",
-							"value": "",
-							"description": "string descriping the reason of absense",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "status",
-							"value": "",
-							"type": "text",
-							"disabled": true
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\" : 1, //FK from User Table, required\r\n    \"time_id\" : 1, //FK from Time Table required\r\n    \"reason\" : \"test_reason\", // type:string, nullable\r\n    \"status\" : 0 // type:integer, required\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/absense_request",
-					"protocol": "http",
+					"raw": "{{base_url}}/absense_request",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{base_url}}"
 					],
-					"port": "8000",
 					"path": [
-						"api",
 						"absense_request"
 					]
 				}
@@ -207,39 +92,84 @@
 			"response": []
 		},
 		{
-			"name": "Attendence",
+			"name": "Get AbsenseRequest",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
 			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
+				"auth": {
+					"type": "bearer",
+					"bearer": [
 						{
-							"key": "attendence_at",
-							"value": "",
-							"description": "integer, required, date when the user logged attendence",
-							"type": "text"
-						},
-						{
-							"key": "time_date_id",
-							"value": "",
-							"description": "integer, required, FK from time_date table, specifiy which section datetime the user logged in",
-							"type": "text"
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmY1NTFhYTkzNDUxODY5YjZlZjJjMzk4NzlhMTdmNDQ0NTdlNjFjNWI0NjMyM2NhMDRiMTE0OTk5MzQ4MWQzNWYwZTQ1MTUyNGJkOTVkYzAiLCJpYXQiOjE2ODI4NzY5ODguMTc3NDAxLCJuYmYiOjE2ODI4NzY5ODguMTc3NDA1LCJleHAiOjE3MTQ0OTkzODguMTU0ODAzLCJzdWIiOiIxMiIsInNjb3BlcyI6W119.VJRDm4M95JW3l54O_WmCxsBO4YX-SIT4duL0SQQVkOwk-1zpOqnLoXsT8HNO3zqSAJpDFxgF4DixUV_G-zLZhoX0fV37S7b4IJRAtux0qjEgylktVkWFwfyttwgOWUw5Ic32swxeLEAgZ9Bij0jhrU5zdkqyHPJccOc8IU-EhSqxOoSJkyGrAG2oIwYJIm_GazuYgv1c3PjhGr5BmWhK6qlUqHNRHZGkooPSrbwD-hoWCPsFpCRtRY2mHTh-wGri4c1Oe1P8SMLbGAnJIMx79bA5GKPPs-qTYOHmo1ARxuedfAhS5Cme-2vxhLfqYNjmeq15pwQkSmEAaewW2SrJ1H6z_Rm1ado4mICymlp0C6RvFGqyqN0B_y-osfVQr7Fv5WRwIVsf6N8rtQaQs-FwfZV79r_herThbtFYL42w2aIzRNWbp0Udoll8JsuHmZS2hwdcdvhaofnnVH52WrhTCqXIRvnzJYOZDO-NKgF3WqCsKYJa29ylEBS_EiHgshZo0JzZwnkhcWsZttD-I1v5Sz2t74E3zQ6mbpkqoYOXBKN7bWJtdwzPgM2Rg9rwysCEvMZed782lbb7tvDPKJuVB5OFukvCooYcCC95OlY5wzG1pnq_Cxi6fB4W_W3Hr71zwnZpT5Fij5CAg_g8AKuKvc1OES5IZrWRjDWncJ048-c",
+							"type": "string"
 						}
 					]
 				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    // to get all the data hit the endpoint without attribute\r\n    // to fetch an exact object by id, type it's id after the url Ex:{{base_url}}/absense_request/5\r\n    // to seach for an objects by a specific attribute here is the attributes you can use to search\r\n    \"id\" : [2, 4], // array to get any element it's id is inside the array Ex: this array get any object it's id is 2 or 4;\r\n    \"user_id\" : [1,2], // array to get all elemetns it's user_id in the array, as the prev one\r\n    \"time_id\" : [1,2], // array to get all elemetns it's time_id in the array, as the prev one\r\n    \"status\" : [0,1] // array to get all elemetns it's status in the array, as the prev one\r\n}\r\n\r\n// try hit it, the output is in an array it's key named \"data\" in the json output",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/attendence",
-					"protocol": "http",
+					"raw": "{{base_url}}/absense_request",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{base_url}}"
 					],
-					"port": "8000",
 					"path": [
-						"api",
+						"absense_request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Attendence",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"attendance_at\" : \"2010-01-17 13:05:03\", // type:string, required, date_format:\"Y-m-d H:i:s\" this is a date says when the attendance logged\r\n    \"user_id\" : 1, // type:integer, required, FK from User Table\r\n    \"time_date_id\" : 1, // type:integer, required, FK from Time_Date Table\r\n    \"absense_request_id\" : 0 // type:integer, nullable, FK from AbsenceRequest Table\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/attendence",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
 						"attendence"
 					]
 				}
@@ -247,45 +177,74 @@
 			"response": []
 		},
 		{
-			"name": "Course",
+			"name": "Get Attendence",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
 			"request": {
-				"method": "POST",
-				"header": [],
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "",
-							"description": "string, required, name of the course",
-							"type": "text"
-						},
-						{
-							"key": "code",
-							"value": "",
-							"description": "string, required, unique, course's code",
-							"type": "text"
-						},
-						{
-							"key": "hour_per_week",
-							"value": "",
-							"description": "integer,required, course's hour per week",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n    // to get all the data hit the endpoint without attribute\r\n    // to fetch an exact object by id, type it's id after the url Ex:{{base_url}}/attendence/5\r\n    // to seach for an objects by a specific attribute here is the attributes you can use to search\r\n    \"id\" : [2, 4], // array to get any element it's id is inside the array Ex: this array get any object it's id is 2 or 4;\r\n    \"user_id\" : [1,2], // array to get all elemetns it's user_id in the array, as the prev one\r\n    \"time_date_id\" : [1,2], // array to get all elemetns it's time_date_id in the array, as the prev one\r\n    \"attendance_at\" : \"2012:10:11 15:02:13\" // array to get all elemetns it's status in the array, as the prev one\r\n}\r\n\r\n// try hit it, the output is in an array it's key named \"data\" in the json output",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/course",
-					"protocol": "http",
+					"raw": "{{base_url}}/attendence",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{base_url}}"
 					],
-					"port": "8000",
 					"path": [
-						"api",
+						"attendence"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Course",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Math\", // type:string, required,\r\n    \"hours_per_week\" : 4, // type:float, required, min:0, max:168\r\n    \"code\" : \"B201\" // type:string, required, unique\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/course",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
 						"course"
 					]
 				}
@@ -293,74 +252,98 @@
 			"response": []
 		},
 		{
-			"name": "Notification",
+			"name": "Get Course",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
 			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/notification?",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"notification"
-					],
-					"query": [
-						{
-							"key": "",
-							"value": null,
-							"description": "**this table still not real**"
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     // to get all the data hit the endpoint without attribute\r\n    // to fetch an exact object by id, type it's id after the url Ex:{{base_url}}/attendence/5\r\n    // to seach for an objects by a specific attribute here is the attributes you can use to search\r\n    \"id\" : [2, 4], // array to get any element it's id is inside the array Ex: this array get any object it's id is 2 or 4;\r\n\r\n    \"name\" : \"Math\", // type:string\r\n    \"hours_per_week\" : 4, // type:float\r\n    \"code\" : \"B201\" // type:string\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/course",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"course"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Section",
+			"name": "Create New Section",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"course_id\" : 1, // type:integer, required, FK from Courses Table\r\n    \"teacher_id\" : 1 // type:integer, required, FK from table Users\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/section?course_id&teacher_id",
-					"protocol": "http",
+					"raw": "{{base_url}}/section",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{base_url}}"
 					],
-					"port": "8000",
 					"path": [
-						"api",
 						"section"
 					],
 					"query": [
 						{
 							"key": "course_id",
 							"value": null,
-							"description": "integer, required, FK of course table to choose this section belongs to which course"
+							"description": "integer, required, FK of course table to choose this section belongs to which course",
+							"disabled": true
 						},
 						{
 							"key": "teacher_id",
 							"value": null,
-							"description": "integer, nullable, FK of table User to specifiy who is this section teacher"
+							"description": "integer, nullable, FK of table User to specifiy who is this section teacher",
+							"disabled": true
 						},
 						{
 							"key": "absense_tolerance",
-							"value": null,
+							"value": "",
 							"description": "calculated value, no need to insert",
 							"disabled": true
 						},
 						{
 							"key": "col_5",
-							"value": null,
+							"value": "",
 							"description": "mostly this is a typo from us but lets reqpeat it here :p",
 							"disabled": true
 						}
@@ -370,44 +353,63 @@
 			"response": []
 		},
 		{
-			"name": "Time",
+			"name": "Get Section",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
 			"request": {
-				"method": "POST",
-				"header": [],
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    // to get all the data hit the endpoint without attribute\r\n    // to fetch an exact object by id, type it's id after the url Ex:{{base_url}}/attendence/5\r\n    // to seach for an objects by a specific attribute here is the attributes you can use to search\r\n    \"id\" : [2, 4], // array to get any element it's id is inside the array Ex: this array get any object it's id is 2 or 4;\r\n    \"course_id\" : [1,2], // array to get any element it's course_id is inside the array.\r\n    \"teacher_id\" : [1,3] // array to get any element it's teacher_id is inside the array.\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/time?day&start_time&duartion&section_id",
-					"protocol": "http",
+					"raw": "{{base_url}}/section",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{base_url}}"
 					],
-					"port": "8000",
 					"path": [
-						"api",
-						"time"
+						"section"
 					],
 					"query": [
 						{
-							"key": "day",
+							"key": "course_id",
 							"value": null,
-							"description": "integer, requried, specifiy which day of the weeks(Saturday is zero)"
+							"description": "integer, required, FK of course table to choose this section belongs to which course",
+							"disabled": true
 						},
 						{
-							"key": "start_time",
+							"key": "teacher_id",
 							"value": null,
-							"description": "datetime, required, specifying when in the day it starts "
+							"description": "integer, nullable, FK of table User to specifiy who is this section teacher",
+							"disabled": true
 						},
 						{
-							"key": "duartion",
-							"value": null,
-							"description": "integer, required, number in minutes telling the duartion of this time"
+							"key": "absense_tolerance",
+							"value": "",
+							"description": "calculated value, no need to insert",
+							"disabled": true
 						},
 						{
-							"key": "section_id",
-							"value": null,
-							"description": "integer, required FK of table sections, specifiying this time belongs to which section"
+							"key": "col_5",
+							"value": "",
+							"description": "mostly this is a typo from us but lets reqpeat it here :p",
+							"disabled": true
 						}
 					]
 				}
@@ -415,45 +417,106 @@
 			"response": []
 		},
 		{
-			"name": "TimeDate",
+			"name": "Create New Time",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "date",
-							"value": "",
-							"description": "string, required, **currently unknown this value refers to what**",
-							"type": "text"
-						},
-						{
-							"key": "time_id",
-							"value": "",
-							"description": "integer, required, FK on table times",
-							"type": "text"
-						},
-						{
-							"key": "is_holiday",
-							"value": "",
-							"description": "integer, requried, boolean value {0 => False, 1 => True} specifiy this time_date is holiday or not",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n    \"day\" : 2, // type:integer, required, indicate which day in the week and Saturday is day with number 0\r\n    \"start_time\" : \"13:00:00\", // type:string, required, date_format:\":H:i:s\", indicate the starting time\r\n    \"duartion\" : 60, // type:integer, required, duartion in minutes\r\n    \"section_id\" : 1 // type:integer, required, FK from Section Table\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/time_date",
-					"protocol": "http",
+					"raw": "{{base_url}}/time",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{base_url}}"
 					],
-					"port": "8000",
 					"path": [
-						"api",
+						"time"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Time",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     // to get all the data hit the endpoint without attribute\r\n    // to fetch an exact object by id, type it's id after the url Ex:{{base_url}}/attendence/5\r\n    // to seach for an objects by a specific attribute here is the attributes you can use to search\r\n    \"id\" : [2, 4], // array to get any element it's id is inside the array Ex: this array get any object it's id is 2 or 4;\r\n    \"section_id\" : [1,2], // array to get any element it's section_id is inside the array.\r\n    \"day\" : [1,3], // array to get any element it's day is inside the array.\r\n    \"duartion\" : 70, // integer value to get any element it's duartion equal the given value (70).\r\n    \"start_tiem\" : \"16:00:00\" // string value presenting a date in H:i:s format, get any element its start_time equal the given value\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/time",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"time"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New TimeDate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"2020-10-21\", // type:string, required, dateformat:\"Y-m-d\"\r\n    \"time_id\": 1, //type:integer, required, FK from Time Table\r\n    \"is_holiday\": 0 //type:integer, required, only allowed values are [0,1] meaning (false, true)\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/time_date",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
 						"time_date"
 					],
 					"query": [
@@ -468,58 +531,223 @@
 			"response": []
 		},
 		{
-			"name": "UserSection",
+			"name": "Get TimeDate",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
-				"header": [],
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
+					"mode": "raw",
+					"raw": "{\r\n     // to get all the data hit the endpoint without attribute\r\n    // to fetch an exact object by id, type it's id after the url Ex:{{base_url}}/attendence/5\r\n    // to seach for an objects by a specific attribute here is the attributes you can use to search\r\n    \"id\" : [2, 4], // array to get any element it's id is inside the array Ex: this array getany object it's id is 2 or 4;\r\n    \"date\" : \"2021-11-26\", // string value presenting a date in Y-m-d format, get any element its date equal the given value\r\n    \"time_id\" : [1,3], // array to get any element it's time_id is inside the array.\r\n    \"is_holiday\": 0 // integer value to get any element it's is_holiday equal the given value (0).\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/time_date",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"time_date"
+					],
+					"query": [
 						{
-							"key": "user_id",
-							"value": "",
-							"description": "no need to send, we already have it",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "section_id",
-							"value": "",
-							"description": "integer, required, FK section_id on table Sections telling user sections",
-							"type": "text"
-						},
-						{
-							"key": "status",
-							"value": "",
-							"description": "integer, required, status of a user_sections **no many information are known\"",
-							"type": "text"
-						},
-						{
-							"key": "absense_times",
-							"value": "",
-							"description": "integer, calculated, no need to send",
-							"type": "text",
+							"key": "date",
+							"value": null,
 							"disabled": true
 						}
 					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New UserSection",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\" : 1, // type:integer, required, FK from User Table\r\n    \"section_id\" : 1, // type:integer, required, FK from Section Table\r\n    \"status\" : 0 // type:integer, nullable\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/user_section",
-					"protocol": "http",
+					"raw": "{{base_url}}/user_section",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{base_url}}"
 					],
-					"port": "8000",
 					"path": [
-						"api",
 						"user_section"
 					]
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get UserSection",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     // to get all the data hit the endpoint without attribute\r\n    // to fetch an exact object by id, type it's id after the url Ex:{{base_url}}/attendence/5\r\n    // to seach for an objects by a specific attribute here is the attributes you can use to search\r\n    \"id\" : [2, 4], // array to get any element it's id is inside the array Ex: this array getany object it's id is 2 or 4;\r\n    \"user_id\" : [1,2], // array to get all elemetns it's user_id in the array, as the prev one\r\n    \"section_id\" : [1,2], // array to get all elemetns it's section_id in the array, as the prev one\r\n    \"status\" : [0,1], // array to get all elemetns it's status in the array, as the prev one\r\n    \"absence_times\": 7 // integer value to get any element it's absence_times greater than or equal the given value (7).\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/user_section",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"user_section"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New User",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\" : 2, // type:integer, optional default value is 3(student)\r\n    \"name\" : \"admin2\", //type:string, required\r\n    \"email\" : \"admin@admin.com\", //type:string, required\r\n    \"mobile\" : \"972\", //type:string, required\r\n    \"dob\" : \"2016-08-11\", //type:string, nullable, dateformat:\"Y-m-d H:i:s\"\r\n    \"password\" : \"a\", //type:string, required, min_length:8\r\n    \"password_confirmation\" : \"a\" //type:string, required, should equal $\"password\" value\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/user",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     // to get all the data hit the endpoint without attribute\r\n    // to fetch an exact object by id, type it's id after the url Ex:{{base_url}}/attendence/5\r\n    // to seach for an objects by a specific attribute here is the attributes you can use to search\r\n    \"id\" : [2, 4], // array to get any element it's id is inside the array Ex: this array getany object it's id is 2 or 4;\r\n    \"type\" : [2, 4], // array to get any element it's type is inside the array \r\n    \"email\" : \"admin@admin.com\", // type:string\r\n    \"mobile\" : \"970\", // type:string\r\n    \"name\" : \"Killua\", // type:string\r\n    \"dob\" : \"2016-08-11\" //type:string, dateformat:\"Y-m-d\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/user",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://attendence.qtrsoft.com/api",
+			"type": "string"
 		}
 	]
 }

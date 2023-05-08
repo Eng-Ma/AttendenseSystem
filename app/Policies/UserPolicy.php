@@ -12,7 +12,7 @@ class UserPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        dd("policy");
     }
 
     /**
@@ -20,7 +20,7 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        //
+        dd("policy");
     }
 
     /**
@@ -36,7 +36,7 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        // dd($user);
+        dd($user);
         // return $user->is($model);
     }
 

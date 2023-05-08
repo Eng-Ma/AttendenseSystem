@@ -21,8 +21,9 @@ class TimeController extends Controller
     }
     public function __construct(Request $request)
     {
+        $this->middleware('auth:api');
         parent::__construct($request);
-        // $this->authorizeResource(Time::class,Str::snake("Time"));
+        $this->authorizeResource(Time::class, Str::snake("Time"));
     }
     public function index(Request $request)
     {

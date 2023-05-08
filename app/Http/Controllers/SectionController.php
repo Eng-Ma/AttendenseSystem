@@ -21,8 +21,9 @@ class SectionController extends Controller
     }
     public function __construct(Request $request)
     {
+        $this->middleware('auth:api');
         parent::__construct($request);
-        // $this->authorizeResource(Section::class,Str::snake("Section"));
+        $this->authorizeResource(Section::class, Str::snake("Section"));
     }
     public function index(Request $request)
     {

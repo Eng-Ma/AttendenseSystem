@@ -22,8 +22,9 @@ class UserController extends Controller
     }
     public function __construct(Request $request)
     {
+        $this->middleware('auth:api', ['except' => ['store']]);
         parent::__construct($request);
-        $this->auth_user = auth()->guard('api')->user();
+        $this->authorizeResource(TimeDate::class, Str::snake("User"));
     }
     public function index(Request $request)
     {
@@ -43,11 +44,9 @@ class UserController extends Controller
     {
         // dd($request->validated());
         // only a temporary solution for autherization, just keep it here for now
-        if ($this->auth_user != null && $this->auth_user->is($user)) {
-            $user->update($request->validated());
-            return new UserResource($user);
-        }
-        return Response::deny("You are not allowed to update this user");
+
+        $user->update($request->validated());
+        return new UserResource($user);
     }
     public function destroy(Request $request, User $user)
     {

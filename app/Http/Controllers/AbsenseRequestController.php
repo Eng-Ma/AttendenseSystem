@@ -21,8 +21,9 @@ class AbsenseRequestController extends Controller
     }
     public function __construct(Request $request)
     {
+        $this->middleware('auth:api');
         parent::__construct($request);
-        // $this->authorizeResource(AbsenseRequest::class,Str::snake("AbsenseRequest"));
+        $this->authorizeResource(AbsenseRequest::class, Str::snake("AbsenseRequest"));
     }
     public function index(Request $request)
     {

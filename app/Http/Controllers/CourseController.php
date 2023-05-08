@@ -21,8 +21,10 @@ class CourseController extends Controller
     }
     public function __construct(Request $request)
     {
+        // dd(app());
+        $this->middleware('auth:api');
         parent::__construct($request);
-        // $this->authorizeResource(Course::class,Str::snake("Course"));
+        $this->authorizeResource(Course::class, Str::snake("Course"));
     }
     public function index(Request $request)
     {

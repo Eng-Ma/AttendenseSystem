@@ -21,8 +21,9 @@ class AttendenceController extends Controller
     }
     public function __construct(Request $request)
     {
+        $this->middleware('auth:api');
         parent::__construct($request);
-        // $this->authorizeResource(Attendence::class,Str::snake("Attendence"));
+        $this->authorizeResource(Attendence::class, Str::snake("Attendence"));
     }
     public function index(Request $request)
     {

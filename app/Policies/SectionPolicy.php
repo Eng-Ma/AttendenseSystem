@@ -29,7 +29,8 @@ class SectionPolicy
      */
     public function create(User $user): bool
     {
-        //
+        // dd("section");
+        return true;
     }
 
     /**

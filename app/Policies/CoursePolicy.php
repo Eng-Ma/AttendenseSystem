@@ -8,12 +8,19 @@ use Illuminate\Auth\Access\Response;
 
 class CoursePolicy
 {
+
+    public function before(User $user, string $ability): bool|null
+    {
+        //dd("hek");
+        return null;
+    }
+
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        //
+        dd("coursep");
     }
 
     /**
@@ -21,7 +28,7 @@ class CoursePolicy
      */
     public function view(User $user, Course $course): bool
     {
-        //
+        dd("coursep2");
     }
 
     /**
@@ -29,7 +36,9 @@ class CoursePolicy
      */
     public function create(User $user): bool
     {
-        //
+        //dd("df");
+        return rand(1, 100) % 2 == 0;
+        // return auth()->guard('api')->check() != null;
     }
 
     /**

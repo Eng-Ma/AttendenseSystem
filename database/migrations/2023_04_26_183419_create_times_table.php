@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('day'); // it could be created as a date or string column 
             //but to make it easier I casted it to integer with Saturday value is 0.
             $table->time('start_time');
-            $table->float('duration')->default(60); // duration of time interval in minutes, default is 1 hour = 60 minutes
+            $table->integer('duration')->default(60); // duration of time interval in minutes, default is 1 hour = 60 minutes
             $table->foreignId('section_id')->references('id')->on('sections')->onDelete('CASCADE');
 
             $table->timestamps();

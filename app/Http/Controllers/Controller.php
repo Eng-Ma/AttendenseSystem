@@ -13,6 +13,5 @@ class Controller extends BaseController
     public $pagination = 10;
     public function __construct(Request $request)
     {
-        // $this->pagination = 10;
     }
 }

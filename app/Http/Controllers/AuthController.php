@@ -25,6 +25,7 @@ class AuthController extends Controller
         $token = auth()->attempt($credentials);
         // dd($token);
         // dd(auth()->user());
+        // dd($credentials);
         if ($token) {
             // ilog($credentials);
             $user = User::where('mobile', '=', $credentials['mobile'])->first();

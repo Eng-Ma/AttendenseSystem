@@ -21,8 +21,9 @@ class TimeDateController extends Controller
     }
     public function __construct(Request $request)
     {
+        $this->middleware('auth:api');
         parent::__construct($request);
-        // $this->authorizeResource(TimeDate::class,Str::snake("TimeDate"));
+        $this->authorizeResource(TimeDate::class, Str::snake("TimeDate"));
     }
     public function index(Request $request)
     {
