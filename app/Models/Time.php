@@ -35,4 +35,5 @@ class Time extends BaseModel
             $q->whereIn('section_id', $section_id);
         });
     }
+    
 }

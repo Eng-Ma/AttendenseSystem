@@ -31,4 +31,8 @@ class TimeDate extends BaseModel
             $q->where('is_holiday', $is_holiday);
         });
     }
+
+    public function getTime(){
+        return $this->belongsTo(Time::class);
+    }
 }

@@ -15,6 +15,10 @@ class Course extends BaseModel
         'code',
     ];
 
+    protected $with = [
+        'sections'
+    ];
+
     public function scopeSearch($query, $request)
     {
 
@@ -30,5 +34,8 @@ class Course extends BaseModel
         $query->when($request->hours_per_week, function ($q, $hours_per_week) {
             $q->where('hours_per_week', $hours_per_week);
         });
+    }
+    public function sections(){
+        return $this->hasMany(Section::class);
     }
 }

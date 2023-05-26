@@ -27,6 +27,12 @@ class User extends Authenticatable
         'avater',
     ];
 
+    protected $with = [
+        'sections',
+        'attendences',
+        'absenseRequest',
+    ];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -77,5 +83,15 @@ class User extends Authenticatable
 
     public function isset()
     {
+    }
+
+    public function sections(){
+        return $this->belongsToMany(Section::class, "user_sections");
+    }
+    public function attendences(){
+        return $this->hasMany(Attendence::class);
+    }
+    public function absenseRequest(){
+        return $this->hasMany(AbsenseRequest::class);
     }
 }

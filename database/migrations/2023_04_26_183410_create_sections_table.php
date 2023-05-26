@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('course_id')->references('id')->on('courses')->onDelete('CASCADE');
             $table->foreignId('teacher_id')->references('id')->on('users')->onDelete('CASCADE');
-            $table->float('absense_tolerance');
+            $table->float('absense_tolerance')->default(0);
             $table->timestamps();
         });
     }

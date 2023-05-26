@@ -14,6 +14,9 @@ class Section extends BaseModel
         'teacher_id',
         'absense_tolerance',
     ];
+    protected $with = [
+        'times'
+    ];
 
     public function scopeSearch($query, $request)
     {
@@ -30,5 +33,9 @@ class Section extends BaseModel
         $query->when($request->absence_tolerance, function ($q, $absence_tolerance) {
             $q->where('absence_tolerance', '>=', $absence_tolerance);
         });
+    }
+
+    public function times(){
+        return $this->hasMany(Time::class);
     }
 }
